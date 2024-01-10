@@ -1,0 +1,17 @@
+
+#how to submit and run your files
+
+follow the guideline when you submit the task:
+	1. put the json files in the project /projectname files
+	2. put all the python script files in the project_name files
+	3.first run task_submit.py  pre_test get energy by find_energy.py
+	4.after that, do all structure
+	5.then run find_all_energy.py, you get Total Energy.json
+#If have in a  relaxation task , run structure_relaxed.py you get both total energy.json and 	the structure relaxation.json.
+
+
+
+
+
+#load aims module
+source /ocean/projects/mat210008p/shared/bin/aims_env.sh

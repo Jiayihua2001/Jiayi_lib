@@ -1,0 +1,122 @@
+# Meeting Notes - December 26, 2023
+
+## Attendees
+- Alice Smith
+- Bob Johnson
+- Charlie Davis
+
+## Agenda
+
+1. Project Updates
+2. Budget Review
+3. Q&A Session
+
+### 1. Project Updates
+
+#### Alpha Project
+
+- **Status**: On track
+- **Next Steps**:
+    - Finalize the design by January 5th
+    - _Note_: Alice to coordinate with the design team
+
+#### Beta Project
+
+- **Status**: Delayed
+- **Issues**:
+    - Server downtime impacting development
+    - Budget constraints for new equipment
+
+**Action Items**:
+- [ ] Investigate server issues (Bob)
+- [x] Reallocate budget for equipment (Alice)
+
+### 2. Budget Review
+
+> **Key Point**: Budget has been reduced by 10% for Q1 2024.
+
+**Discussion**:
+- Need to prioritize projects
+- Possible reduction in marketing expenses
+
+**Figures**:
+- Previous budget: `$100,000`
+- New budget: `$90,000`
+
+### 3. Q&A Session
+
+- Question about remote work policy
+- Discussion about health benefits
+
+## Conclusion
+
+**Next Meeting**:
+- **Date**: January 10, 2024
+- **Topics**: Finalize Q1 priorities, Employee engagement strategies
+
+---
+
+*Note compiled by: [Your Name]*
+
+*Last updated: 2023-12-26*
+
+
+
+
+##**LATEX SYMBOL**
+LaTeX is a typesetting system that is widely used for the communication and publication of scientific documents in many fields. It's known for its ability to handle complex mathematical formulas and expressions. When incorporated into Markdown, it can greatly enhance the representation of mathematical and scientific notation.
+
+Here are more examples of LaTeX expressions that you might use:
+
+### Basic Mathematical Operations
+
+1. **Addition**: \( a + b \)
+2. **Subtraction**: \( a - b \)
+3. **Multiplication**: \( a \times b \) or \( a \cdot b \)
+4. **Division**: \( \frac{a}{b} \) or \( a \div b \)
+
+### Algebra
+
+1. **Exponents**: \( a^2 \) or \( e^{x} \)
+2. **Square Roots**: \( \sqrt{x} \) or \( \sqrt[n]{x} \) for n-th root
+3. **Equations**: \( x + 3 = 7 \)
+
+### Calculus
+
+1. **Limits**: \( \lim_{x \to \infty} f(x) \)
+2. **Derivatives**: \( \frac{d}{dx} x^2 \) or \( \frac{\partial}{\partial x} xy \)
+3. **Integrals**: \( \int f(x) dx \) or \( \int_{a}^{b} x^2 dx \)
+
+### Trigonometry
+
+1. **Sine, Cosine, and Tangent**: \( \sin(\theta) \), \( \cos(\theta) \), \( \tan(\theta) \)
+2. **Trigonometric Identities**: \( \sin^2(\theta) + \cos^2(\theta) = 1 \)
+
+### Matrices and Vectors
+
+1. **Matrix**: 
+   \[
+   \begin{pmatrix}
+   a & b \\
+   c & d
+   \end{pmatrix}
+   \]
+2. **Vector**: \( \vec{v} = \begin{pmatrix} x \\ y \\ z \end{pmatrix} \)
+
+### Special Functions and Symbols
+
+1. **Summation**: \( \sum_{i=1}^{n} i^2 \)
+2. **Product**: \( \prod_{i=1}^{n} i \)
+3. **Greek Letters**: \( \alpha, \beta, \gamma, \Delta \)
+4. **Infinity**: \( \infty \)
+
+### Equations and Alignments
+
+1. **Single Equation**: \( E = mc^2 \)
+2. **Aligned Equations**:
+   \[
+   \begin{align}
+   a &= b + c \\
+   d &= e - f
+   \end{align}
+   \]
