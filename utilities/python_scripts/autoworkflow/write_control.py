@@ -1,9 +1,10 @@
+# automatically write control.in file 
+
 from ase.io import read, write
 import numpy as np 
 import os
 
-light_path = '/ocean/projects/mat210008p/shared/Software/FHIaims2021_210716-master/species_defaults/defaults_2020/light'
-
+light_path = '/ocean/projects/mat210008p/shared/Software/FHIaims_2023_1/fhi-aims.221103_1/species_defaults/defaults_2020/light'
 
 relaxed_settings = {'xc': 'pbe',
 					'spin': 'none',
