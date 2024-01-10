@@ -5,10 +5,10 @@ usr_name :jiayihua
 pw: same as you andrew emial
 
 ## context
- 1.basic_traning   #the knowledge you have learned
- 2.code_handbook  #code tutorials -ipynb
- 3.lib    #my code system on the basis of ibslib and pymatgen
- 5.utilities #useful tookit -mainly pythonscript
+ 1.basic_traning  #the knowledge you have learned  
+ 2.code_handbook  #code tutorials -ipynb  
+ 3.lib    #my code system on the basis of ibslib and pymatgen  
+ 5.utilities #useful tookit -mainly pythonscript  
 
 
 
