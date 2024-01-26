@@ -40,8 +40,7 @@ def json_merge(struc_dir_path,json_name):
             name of merged json file
     """
     struc_dic = read(struc_dir_path,file_format='json')
-    ase_dic={key:struc.get_aims() for key, struc in struc_dic.items()}
-
+    ase_dic={key:struc.get_ase_atoms() for key, struc in struc_dic.items()}
     str_list = [f'"{k}": {encode(v)},\n' for k, v in ase_dic.items()]
     str_list[-1] = str_list[-1][:-2]
     with open(json_name, "w") as wfile:
@@ -50,17 +49,18 @@ def json_merge(struc_dir_path,json_name):
         wfile.write("\n}")
     return 
 
-
 def json_to_geo(struc_dir_path,idx):
     test_json_path = os.path.join(struc_dir_path,os.listdir(struc_dir_path)[idx])
     struc=read(test_json_path,file_format='json')
     write('mol.in',struc,file_format='geo')
     return
-    
+
+
 def main():
     cd=os.getcwd()
-    struc_dir_path=os.path.join(cd,'dimer_generation_0.8_0.9')
+    struc_dir_path=os.path.join(cd,'dimer_generation_0.83_0.85')
     json_name='generation.json'
+    #json_merge(struc_dir_path,json_name)
     json_merge(struc_dir_path,json_name)
     
 if __name__ == '__main__':
