@@ -28,11 +28,22 @@ def find_energy(aims_path):
             break
     return float(energy)
 
-#func of extracting info
-def struc_relax(temp_path):
-        return ase_struc_relaxed
+def write_json(out_dict, filename):
+    """
+    Write a Json file 
+    out_dic should be ase_dic
+    """
+
+    str_list = [f'"{k}": {encode(v)},\n' for k, v in out_dict.items()]
+    str_list[-1] = str_list[-1][:-2]
+    with open(filename, "w") as wfile:
+        wfile.write("{\n")
+        wfile.writelines(str_list)
+        wfile.write("\n}")
+
+    return
     
-def main(json_path):
+def main(json_path,relaxed= True):
     """
     post-processing 
     """
@@ -45,19 +56,18 @@ def main(json_path):
     unconverge_dic={}
 
     for geometry_id,values in struct_dict.items():
-        temp_path=os.path(calc_p,geometry_id)
+        temp_path=os.path.join(calc_p,geometry_id)
         os.chdir(temp_path)
         aims_path=os.path.abspath('aims.out')
         if is_converge(aims_path):
             energy_dic[geometry_id]=find_energy(aims_path)
-            if os.path.exists('geometry.in.next_step'):
-                os.system("mv geometry.in.next_step geometry.in")
+            if relaxed:
                 ase_struc_relaxed = read("geometry.in")
-                relax_dic[geometry_id]=json.loads(encode(ase_struc_relaxed))
+                relax_dic[geometry_id]=ase_struc_relaxed
                 os.chdir(calc_p)
             else:
                 os.chdir(calc_p)
-                
+           
 
         else:
             if os.path.exists('geometry.in.next_step'):
@@ -69,12 +79,16 @@ def main(json_path):
             unconverge_dic[geometry_id]=values
             os.chdir(calc_p)
             continue
-
+    
+    sorted_energy_dic = {k: v for k, v in sorted(energy_dic.items(), key=lambda item: item[1])}
+    sorted_relax_dic={}
+    for k,v in sorted_energy_dic.items():
+        if k in relax_dic:
+            sorted_relax_dic[v]=relax_dic[k]
     os.chdir(tp)
-    with open("Total_energy.json",'w',encoding='utf8') as fe:
-        json.dump(energy_dic,fe,indent=6) 
-    with open("sructure_relaxed.json",'w',encoding='utf8') as fr:
-        json.dump(relax_dic,fr,indent=6) 
+    write_json(sorted_relax_dic,'sructure_relaxed.json')
+    write_json(sorted_energy_dic,'sructure_energy.json')
+    
     with open("unconverged_dic",'w',encoding='utf8') as fe:
         json.dump(unconverge_dic,fe,indent=6) 
 
@@ -82,5 +96,5 @@ def main(json_path):
 
 tp=os.getcwd()
 calc_p=os.path.abspath('calc')
-json_path=''
+json_path='/ocean/projects/mat210008p/jhuanga/projects/target11/ase_aims/relaxation_dup/structures_removed.json'
 main(json_path)

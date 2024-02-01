@@ -40,27 +40,27 @@ def task_submission(struc_json,pretest=True):
         ase_struc_pre =list(ase_dict.values())[0]
         os.chdir(pre_p)
         write("geometry.in", ase_struc_pre, format="aims")
-        os.system('cp {control_p} .')
-        os.system('cp {submit_p} .')
+        os.system(f'cp {control_p} .')
+        os.system(f'cp {submit_p} .')
         os.system('sbatch submit.sh')
         os.chdir(tp)
 
     elif pretest == False:
         os.chdir(calc_p)
         for key,values in ase_dict.items():
-            temp_path = os.path(calc_p,key)
+            temp_path = os.path.join(calc_p,key)
             if not os.path.isdir(temp_path):
                 os.mkdir(temp_path)
             os.chdir(temp_path)
             write("geometry.in", values, format="aims")
-            os.system('cp {control_p} .')
-            os.system('cp {submit_p} .')
+            os.system(f'cp {control_p} .')
+            os.system(f'cp {submit_p} .')
             os.system('sbatch submit.sh')
             os.chdir(calc_p)
 
 
         # End of the script
 if __name__ == "__main__":
-    struc_json=''
-    task_submission(struc_json,pretest=True)
+    struc_json='/ocean/projects/mat210008p/jhuanga/projects/target11/ase_aims/relaxation_dup/structures_removed.json'
+    task_submission(struc_json,pretest=False)
     
