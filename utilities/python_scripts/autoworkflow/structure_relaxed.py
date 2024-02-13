@@ -86,8 +86,8 @@ def main(json_path,relaxed= True):
         if k in relax_dic:
             sorted_relax_dic[v]=relax_dic[k]
     os.chdir(tp)
-    write_json(sorted_relax_dic,'sructure_relaxed.json')
-    write_json(sorted_energy_dic,'sructure_energy.json')
+    write_json(sorted_relax_dic,'structure_relaxed.json')
+    write_json(sorted_energy_dic,'structure_energy.json')
     
     with open("unconverged_dic",'w',encoding='utf8') as fe:
         json.dump(unconverge_dic,fe,indent=6) 

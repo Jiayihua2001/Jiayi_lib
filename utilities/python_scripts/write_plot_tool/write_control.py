@@ -114,12 +114,13 @@ def write_control(struct, species_path, settings):
 
 
 
-struc = read('/ocean/projects/mat210008p/jhuanga/projects/target11/unique_dimer/test.json',file_format='json')
-ase_struc = struc.get_ase_atoms()   #the same 
-write('geometry',struc,file_format='geo')
+# struc = read('/ocean/projects/mat210008p/jhuanga/projects/target11/unique_dimer/test.json',file_format='json')
+# ase_struc = struc.get_ase_atoms()   #the same 
+# write('geometry',struc,file_format='geo')
 
+struc=read('mol.in',file_format= 'geo')
 # for relaxation
-write_control(ase_struc, light_path, relaxed_settings)
+write_control(struc, light_path, relaxed_settings)
 
 # for energy
-write_control(ase_struc, light_path, energy_settings)
+#write_control(struc, light_path, energy_settings)
