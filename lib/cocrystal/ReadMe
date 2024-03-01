@@ -1,0 +1,19 @@
+# This is the instruction of how to run gnrs for dimer in cocrystal csp.
+
+## 1. First construct the gnrs work directory: 
+
+####    1.mol.in (geometry.in for your asymmetric unit,which can be generate by Find_dimers code,i may include this to the workflow later ) ; 2.exp_geometry.in (exp_xtal structures that should be relaxed first) 3.ui.conf (uncomment rigid press , generation setting as same as "crystal") 4.submit.sh 
+
+### For now, we must extract mol.in manually or use manny's code ; 
+### for other 3 files. Please first construc a Cocrystal_gnrs file: attach submit_relax.in ,submit_gnrs.in,ui.conf, write_control.py, write_gnrs_dir.py, each cocrystal has a dir ,with cif in it.    
+### Then run write_gnrs_dir.py. 
+### change the setting of ui.conf carefully.   (Z,sg)  
+### copy the dir to gnrs
+
+## 2. go to gnrs repo, rename genarris_master_dimer.py  as genarris_master.py
+
+## 3. Second, modify and run dimer_gnrs_submit.py in ibslib environment.(the path differ in every task)
+###    if n_mol != n_1 +n_2 , assign  "residues" in dimer_gnrs_submit.py. ("residues" is the number of unique mol in your input struc)
+
+
+
