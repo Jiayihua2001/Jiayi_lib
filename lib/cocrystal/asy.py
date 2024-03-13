@@ -7,6 +7,11 @@ import numpy as np
 from ibslib.molecules import FindMolecules
 import ibslib
 import ase
+
+# still need further improvement
+### the problem: the molecule not complete:
+### possible method :   must take distance into account.
+
 def extract_asymmetric_unit(structure):
     """
     Extracts the asymmetric unit from a given crystal structure.
@@ -111,5 +116,4 @@ struc=ibslib.structure.Structure.from_pymatgen(mol)
 center_mol= center_dimer(struc)
 write('asy.in',center_mol,file_format='geo')
 
-### the problem: the molecule not complete:
-### possible method :   must take distance into account.
+

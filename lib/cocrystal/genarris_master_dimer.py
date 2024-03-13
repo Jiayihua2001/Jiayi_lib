@@ -14,7 +14,7 @@ from gnrs.parallel.structs import DistributedStructs
 from gnrs.parallel import init_parallel
 import gnrs.restart as restart
 import gnrs.output as gout
-
+from ase.io import read
 # uncomment for  dimer csp
 import json
 
@@ -145,7 +145,6 @@ class Genarris:
         mol_path_l.append(mol1_p)
         mol_path_l.append(mol2_p)
         out_dir["rtm_set"]["molecule_path"]=mol_path_l
-
         n_mol_l=out_dir["rtm_set"]["n_atoms_in_mol"]
         n_dimer=n_mol_l[0]
         try:
@@ -237,11 +236,15 @@ class Genarris:
         if self.is_master:
             os.system('cp ./mol1.in ./tmp/molecule')
             os.system('cp ./mol2.in ./tmp/molecule')
+            mol_1=read('./mol1.in')
+            mol_2=read('./mol2.in')
             os.system('rm -f ./tmp/molecule/geometry_0.in')
             restart_path = os.path.join('./tmp', "restart.json")
             parser = UserSettingsParser(restart_path)
             user_settings = parser.load_user_settings()
-            user_settings=self.dimer_setting(user_settings,11,11)
+            num_1=len(mol_1)
+            num_2=len(mol_2)
+            user_settings=self.dimer_setting(user_settings,num_1,num_2)
             # Update log level
             self.logger.info("Change user settings for dimer rigid_press")
             UserSettingsSanityChecker(user_settings)
