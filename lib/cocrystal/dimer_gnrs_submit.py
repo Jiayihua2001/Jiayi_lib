@@ -36,20 +36,20 @@ def main():
         try:
             os.chdir(target_p)
             os.chdir('4000')
-            os.chdir('rigid')
-            is_found=find_mol()
-            if is_found :
-                os.system('sbatch submit.sh')
-            else:
-                pass
+            # is_found=find_mol()
+            # if is_found :
+            #     os.system('sbatch submit.sh')
+            # else:
+            #     pass
+            os.system('sbatch submit.sh')
             os.chdir(target_p)
             os.chdir('10000')
-            os.chdir('rigid')
-            is_found=find_mol()
-            if is_found :
-                os.system('sbatch submit.sh')
-            else:
-                pass
+            # is_found=find_mol()
+            # if is_found :
+            #     os.system('sbatch submit.sh')
+            # else:
+            #     pass
+            os.system('sbatch submit.sh')
             os.chdir(cp)
         except:
             print('This target fail')
