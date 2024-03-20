@@ -112,17 +112,17 @@ def compare(mol1, mol2, rmsd_tol=0.15, bonds_kw={}, chiral=True, fixed_order=[])
     min_rot = (np.diag([1,1,1]),np.diag([1,1,1]))
     min_idx = ((np.arange(0,len(geo1)), np.arange(0,len(geo2))))
     
-    ### 1. Check Formula
-    f1 = mol1.formula()
-    f2 = mol2.formula()
+    # ### 1. Check Formula
+    # f1 = mol1.formula()
+    # f2 = mol2.formula()
     
-    if f1 != f2:
-        return ret_dups,min_rmsd,min_trans,min_rot,min_idx,0
+    # if f1 != f2:
+    #     return ret_dups,min_rmsd,min_trans,min_rot,min_idx,0
         
-    ### 2. Check that graphs of molecules are the same
-    graph_result = compare_graph(mol1, mol2, bonds_kw)
-    if not graph_result:
-        return ret_dups,min_rmsd,min_trans,min_rot,min_idx,0
+    # ### 2. Check that graphs of molecules are the same
+    # graph_result = compare_graph(mol1, mol2, bonds_kw)
+    # if not graph_result:
+    #     return ret_dups,min_rmsd,min_trans,min_rot,min_idx,0
     
     ### 3. Robust RMSD checking
     # (3a) Principal axes
