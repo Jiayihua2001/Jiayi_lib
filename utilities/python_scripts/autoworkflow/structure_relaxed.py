@@ -62,7 +62,9 @@ def main(json_path,relaxed= True):
         if is_converge(aims_path):
             energy_dic[geometry_id]=find_energy(aims_path)
             if relaxed:
-                ase_struc_relaxed = read("geometry.in")
+                os.system('mv geometry.in.next_step relax.in')
+                ase_struc_relaxed = read("relax.in")
+                os.system('mv geometry.in.next_step relax.in')
                 relax_dic[geometry_id]=ase_struc_relaxed
                 os.chdir(calc_p)
             else:
