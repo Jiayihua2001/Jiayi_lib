@@ -1,16 +1,13 @@
 from ibslib.io  import read
-
+import copy
+import numpy as np
 from ibslib.structure import Structure
 from ase.io.jsonio import encode,decode
 import json
 import os
 from ibslib.analysis import get
 from ibslib.plot.genarris import plot_volume_hist,plot_spg_hist
-import os
-
-
-current_path = os.getcwd()
-
+import matplotlib.pyplot  as plt
 def get_dict_from_json(struc_path):
     with open(struc_path,'r') as f:
         out=json.load(f)
@@ -50,37 +47,35 @@ def read_dict_from_file(file_path):
     except json.JSONDecodeError:
         print("Error: The file content is not in valid JSON format.")
 
-### need to be fixed later
-# def recreate_plot(arguments):
-#     fig = plt.figure()
-#     ax = fig.add_subplot(111)
+def plot_v(path_json,step_name):
+    volume_dict,sg_dict=get_dict_from_json(path_json)
 
-#     # Call the original function with the saved arguments
-#     plot_volume_hist(ax=ax, **arguments)
+    # save the dict to json if needed
+    #file_path_v = 'volume.json' # Replace with your desired file path
+    file_path_sg='sg.json'
+    #save_dict_to_json_file(volume_dict, file_path_v)
+    save_dict_to_json_file(sg_dict, file_path_sg)
 
+    #read from json if needed
+    # volume_dict=read_dict_from_file(file_path_v)
+    # sg_dict=read_dict_from_file(file_path_sg)
 
+    #step2:dict to list,plot the graph
+    volume_list=list(volume_dict.values())   ### !!! attention:plot input must be a list instead of a dictionary
+    #sg_list=list(sg_dict.values())
+    plot_volume_hist(volume_list,exp_volume=753.299,figname=f'volume_{step_name}_plot')   #only if you give the filename ,it can save the plot  , exp_volume in A^3
+    plt.show()
+    return
 
 #Usage
 #step1:get dict from json
-path_json=os.path.join(current_path,'structures/generation/structures.json')
-volume_dict,sg_dict=get_dict_from_json(path_json)
+        
+cp= os.getcwd()
+path_json_ge=os.path.join(cp,'structures/generation/structures.json')  
+path_json_symm=os.path.join(cp,'structures/symm_rigid_press/structures.json') #symm_rigid_press
 
-# # save the dict to json (if needed)
-# file_path_v = 'volume.json' # Replace with your desired file path
-# file_path_sg='sg.json'
-# save_dict_to_json_file(volume_dict, file_path_v)
-# save_dict_to_json_file(sg_dict, file_path_sg)
-
-# #read from json (if needed)
-# volume_dict=read_dict_from_file(file_path_v)
-# sg_dict=read_dict_from_file(file_path_sg)
-
-#step2:dict to list,plot the graph
-volume_list=list(volume_dict.values())   ### !!! attention:plot input must be a list instead of a dictionary
-sg_list=list(sg_dict.values())
-plot_volume_hist(volume_list,exp_volume=753.299,figname='volume_plot')  #only if you give the filename ,it can save the plot  , exp_volume in A^3
-
-plot_spg_hist(sg_list,exp_spg_arrow=14)
+plot_v(path_json_ge,'generation')
+plot_v(path_json_symm,'rigid')
 
 
 
